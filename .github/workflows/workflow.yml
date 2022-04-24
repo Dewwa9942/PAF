@@ -14,6 +14,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@master
+      - uses: actions/setup-java@v2
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+      - uses: pmd/pmd-github-action@v1
+        with:
+          rulesets: 'ruleset.xml'
       - uses: codecov/codecov-action@v2
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
+          files: ./ruleset.xml
