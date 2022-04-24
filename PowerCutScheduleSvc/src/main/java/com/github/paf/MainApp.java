@@ -12,21 +12,12 @@ import java.util.logging.Logger;
 public class MainApp {
 
     public static final String BASE_URI = "http://0.0.0.0/";
-    public static final int PORT = System.getenv("PORT") != null ? Integer.parseInt(System.getenv("PORT")) : 8080;
-    public static final String USER_SVC_URL = System.getenv("USER_SVC_URL") != null ? System.getenv("USER_SVC_URL") : "http://localhost:8030/api/v1";
-    public static final String PAYMENT_SVC_URL = System.getenv("PAYMENT_SVC_URL") != null ? System.getenv("PAYMENT_SVC_URL") : "http://localhost:8040/api/v1";
-    public static final String BILL_SVC_URL = System.getenv("BILL_SVC_URL") != null ? System.getenv("BILL_SVC_URL") : "http://localhost:8050/api/v1";
-    public static final String FEEDBACK_SVC_URL = System.getenv("FEEDBACK_SVC_URL") != null ? System.getenv("FEEDBACK_SVC_URL") : "http://localhost:8060/api/v1";
-    public static final String POWERCUTSCHEDULE_SVC_URL = System.getenv("POWERCUTSCHEDULE_SVC_URL") != null ? System.getenv("POWERCUTSCHEDULE_SVC_URL") : "http://localhost:8070/api/v1";
+    public static final int PORT = System.getenv("PORT") != null ? Integer.parseInt(System.getenv("PORT")) : 8070;
 
     public static Server startServer() {
 
         final ResourceConfig config = new ResourceConfig()
-                .registerInstances(new UserController(USER_SVC_URL))
-                .registerInstances(new PaymentController(PAYMENT_SVC_URL))
-                .registerInstances(new BillController(BILL_SVC_URL))
-                .registerInstances(new FeedbackController(FEEDBACK_SVC_URL))
-                .registerInstances(new PowerCutScheduleController(POWERCUTSCHEDULE_SVC_URL))
+                .registerInstances(new PowerCutScheduleController())
                 .register(CORSResponseFilter.class);
 
         return JettyHttpContainerFactory.createServer(UriBuilder.fromUri(BASE_URI).port(PORT).build(), config);

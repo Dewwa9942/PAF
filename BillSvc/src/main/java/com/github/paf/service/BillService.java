@@ -23,10 +23,10 @@ public class BillService {
 					.entity("DataBase connectivity Error")
 					.build();
 
-			String query = "INSERT INTO bill(nic, price, date, meterReader) VALUES (?, ?, ?, ?)";
+			String query = "INSERT INTO bill(month, price, date, meterReader) VALUES (?, ?, ?, ?)";
 			PreparedStatement preparedStmt = con.prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS);
 
-			preparedStmt.setString(1, bill.getNic());
+			preparedStmt.setString(1, bill.getMonth());
 			preparedStmt.setString(2, bill.getPrice());
 			preparedStmt.setString(3, bill.getDate());
 			preparedStmt.setString(4, bill.getMeterReader());
@@ -67,11 +67,11 @@ public class BillService {
 
 			while (rs.next()) {
 				int id = rs.getInt("id");
-				String nic = rs.getString("nic");
+				String month = rs.getString("month");
 				String price = rs.getString("price");
 				String date = rs.getString("date");
 				String meterReader = rs.getString("meterReader");
-				Bill bill = new Bill(nic, price, date, meterReader);
+				Bill bill = new Bill(month, price, date, meterReader);
 				bill.setId(id);
 				bills.add(bill);
 
@@ -107,11 +107,11 @@ public class BillService {
 
 			while (rs.next()) {
 				int id = rs.getInt("id");
-				String nic = rs.getString("nic");
+				String month = rs.getString("month");
 				String price = rs.getString("price");
 				String date = rs.getString("date");
 				String meterReader = rs.getString("meterReader");
-				bill = new Bill(nic, price, date, meterReader);
+				bill = new Bill(month, price, date, meterReader);
 				bill.setId(id);
 			}
 			con.close();
@@ -170,7 +170,7 @@ public class BillService {
 			String query = "UPDATE bill SET nic=?, price=?, date=?, meterReader=? WHERE id=?";
 			PreparedStatement preparedStmt = con.prepareStatement(query);
 
-			preparedStmt.setString(1, bill.getNic());
+			preparedStmt.setString(1, bill.getMonth());
 			preparedStmt.setString(2, bill.getPrice());
 			preparedStmt.setString(3, bill.getDate());
 			preparedStmt.setString(4, bill.getMeterReader());
