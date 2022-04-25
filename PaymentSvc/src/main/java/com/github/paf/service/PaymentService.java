@@ -23,13 +23,13 @@ public class PaymentService {
 					.entity("DataBase connectivity Error")
 					.build();
 
-			String query = "INSERT INTO payment(nic, month, price, date) VALUES (?, ?, ?, ?)";
+			String query = "INSERT INTO payment(month, price, date, method) VALUES (?, ?, ?, ?)";
 			PreparedStatement preparedStmt = con.prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS);
 
-			preparedStmt.setString(1, payment.getNic());
-			preparedStmt.setString(2, payment.getMonth());
-			preparedStmt.setString(3, payment.getPrice());
-			preparedStmt.setString(4, payment.getDate());
+			preparedStmt.setString(1, payment.getMonth());
+			preparedStmt.setString(2, payment.getPrice());
+			preparedStmt.setString(3, payment.getDate());
+			preparedStmt.setString(4, payment.getMethod());
 
 			preparedStmt.execute();
 			ResultSet rs = preparedStmt.getGeneratedKeys();
@@ -67,11 +67,11 @@ public class PaymentService {
 
 			while (rs.next()) {
 				int id = rs.getInt("id");
-				String nic = rs.getString("nic");
 				String month = rs.getString("month");
 				String price = rs.getString("price");
 				String date = rs.getString("date");
-				Payment payment = new Payment(nic, month, price, date);
+				String method = rs.getString("method");
+				Payment payment = new Payment(month, price, date, method);
 				payment.setId(id);
 				payments.add(payment);
 
@@ -107,11 +107,11 @@ public class PaymentService {
 
 			while (rs.next()) {
 				int id = rs.getInt("id");
-				String nic = rs.getString("nic");
 				String month = rs.getString("month");
 				String price = rs.getString("price");
 				String date = rs.getString("date");
-				payment = new Payment(nic, month, price, date);
+				String method = rs.getString("method");
+				payment = new Payment(month, price, date, method);
 				payment.setId(id);
 			}
 			con.close();
@@ -170,10 +170,10 @@ public class PaymentService {
 			String query = "UPDATE payment SET nic=?, month=?, price=?, date=? WHERE id=?";
 			PreparedStatement preparedStmt = con.prepareStatement(query);
 
-			preparedStmt.setString(1, payment.getNic());
-			preparedStmt.setString(2, payment.getMonth());
-			preparedStmt.setString(3, payment.getPrice());
-			preparedStmt.setString(4, payment.getDate());
+			preparedStmt.setString(1, payment.getMonth());
+			preparedStmt.setString(2, payment.getPrice());
+			preparedStmt.setString(3, payment.getDate());
+			preparedStmt.setString(4, payment.getMethod());
 			preparedStmt.setInt(5, payment.getId());
 
 			preparedStmt.execute();

@@ -24,29 +24,29 @@ VALUES
     ("456789012V", "user 4", "city 4", "456789012"),
     ("567890123V", "user 5", "city 5", "567890123");
 
-# Payment - NIC, Month, Price, Date
+# Payment - Month, Price, Date, Method
 CREATE TABLE payment(
                      id INT NOT NULL AUTO_INCREMENT,
-                     nic VARCHAR(10) NOT NULL,
                      month VARCHAR(100) NOT NULL,
                      price VARCHAR(100) NOT NULL,
                      date VARCHAR(100) NOT NULL,
+                     method VARCHAR(50) NOT NULL,
 
                      CONSTRAINT pk_payment PRIMARY KEY(id)
 );
 
-INSERT INTO payment(nic,month,price,date)
+INSERT INTO payment(month,price,date,method)
 VALUES
-    ("123456789V", "month 1", "price 1", "date 1"),
-    ("234567890V", "month 2", "price 2", "date 2"),
-    ("345678901V", "month 3", "price 3", "date 3"),
-    ("456789012V", "month 4", "price 4", "date 4"),
-    ("567890123V", "month 5", "price 5", "date 5");
+    ("month 1", "price 1", "date 1", "method 1"),
+    ("month 2", "price 2", "date 2", "method 2"),
+    ("month 3", "price 3", "date 3", "method 3"),
+    ("month 4", "price 4", "date 4", "method 4"),
+    ("month 5", "price 5", "date 5", "method 5");
 
-# Bill - NIC, Price, Date, Meter Reader
+# Bill - Month, Price, Date, Meter Reader
 CREATE TABLE bill(
                      id INT NOT NULL AUTO_INCREMENT,
-                     nic VARCHAR(10) NOT NULL,
+                     month VARCHAR(50) NOT NULL,
                      price VARCHAR(100) NOT NULL,
                      date VARCHAR(100) NOT NULL,
                      meterReader VARCHAR(100) NOT NULL,
@@ -54,13 +54,13 @@ CREATE TABLE bill(
                      CONSTRAINT pk_bill PRIMARY KEY(id)
 );
 
-INSERT INTO bill(nic,price,date,meterReader)
+INSERT INTO bill(month,price,date,meterReader)
 VALUES
-    ("123456789V", "price 1", "date 1", "meter reader 1"),
-    ("234567890V", "price 2", "date 2", "meter reader 2"),
-    ("345678901V", "price 3", "date 3", "meter reader 3"),
-    ("456789012V", "price 4", "date 4", "meter reader 4"),
-    ("567890123V", "price 5", "date 5", "meter reader 5");
+    ("month 1", "price 1", "date 1", "meter reader 1"),
+    ("month 2", "price 2", "date 2", "meter reader 2"),
+    ("month 3", "price 3", "date 3", "meter reader 3"),
+    ("month 4", "price 4", "date 4", "meter reader 4"),
+    ("month 5", "price 5", "date 5", "meter reader 5");
 
 # Feedback - NIC, Category, Location, Message
 CREATE TABLE feedback(
@@ -80,3 +80,22 @@ VALUES
     ("345678901V", "category 3", "location 3", "message 3"),
     ("456789012V", "category 4", "location 4", "message 4"),
     ("567890123V", "category 5", "location 5", "message 5");
+
+# PowerCutSchedule - Zone, Date, Time, TotalHours
+CREATE TABLE powercutschedule(
+                     id INT NOT NULL AUTO_INCREMENT,
+                     zone VARCHAR(10) NOT NULL,
+                     date VARCHAR(100) NOT NULL,
+                     time VARCHAR(100) NOT NULL,
+                     totalHours VARCHAR(100) NOT NULL,
+
+                     CONSTRAINT pk_powercutschedule PRIMARY KEY(id)
+);
+
+INSERT INTO powercutschedule(zone,date,time,totalHours)
+VALUES
+    ("A", "date 1", "time 1", "totalHours 1"),
+    ("B", "date 2", "time 2", "totalHours 2"),
+    ("C", "date 3", "time 3", "totalHours 3"),
+    ("D", "date 4", "time 4", "totalHours 4"),
+    ("E", "date 5", "time 5", "totalHours 5");
