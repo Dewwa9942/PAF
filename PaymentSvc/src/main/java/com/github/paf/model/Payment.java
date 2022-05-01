@@ -9,9 +9,6 @@ public class Payment {
     @Column(name = "id")
     private int id;
     @Basic
-    @Column(name = "nic")
-    private String nic;
-    @Basic
     @Column(name = "month")
     private String month;
     @Basic
@@ -20,12 +17,15 @@ public class Payment {
     @Basic
     @Column(name = "date")
     private String date;
+    @Basic
+    @Column(name = "method")
+    private String method;
 
-    public Payment(String nic, String month, String price, String date) {
-        this.nic = nic;
+    public Payment(String month, String price, String date, String method) {
         this.month = month;
         this.price = price;
         this.date = date;
+        this.method = method;
     }
 
     public Payment() {
@@ -38,14 +38,6 @@ public class Payment {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getNic() {
-        return nic;
-    }
-
-    public void setNic(String nic) {
-        this.nic = nic;
     }
 
     public String getMonth() {
@@ -72,6 +64,14 @@ public class Payment {
         this.date = date;
     }
 
+    public String getMethod() {
+        return method;
+    }
+
+    public void setMethod(String method) {
+        this.method = method;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -80,10 +80,10 @@ public class Payment {
         Payment payment = (Payment) o;
 
         if (id != payment.id) return false;
-        if (nic != null ? !nic.equals(payment.nic) : payment.nic != null) return false;
         if (month != null ? !month.equals(payment.month) : payment.month != null) return false;
         if (price != null ? !price.equals(payment.price) : payment.price != null) return false;
         if (date != null ? !date.equals(payment.date) : payment.date != null) return false;
+        if (method != null ? !method.equals(payment.method) : payment.method != null) return false;
 
         return true;
     }
@@ -91,10 +91,10 @@ public class Payment {
     @Override
     public int hashCode() {
         int result = id;
-        result = 31 * result + (nic != null ? nic.hashCode() : 0);
         result = 31 * result + (month != null ? month.hashCode() : 0);
         result = 31 * result + (price != null ? price.hashCode() : 0);
         result = 31 * result + (date != null ? date.hashCode() : 0);
+        result = 31 * result + (method != null ? method.hashCode() : 0);
         return result;
     }
 }

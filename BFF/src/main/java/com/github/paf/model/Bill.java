@@ -9,8 +9,8 @@ public class Bill {
     @Column(name = "id")
     private int id;
     @Basic
-    @Column(name = "nic")
-    private String nic;
+    @Column(name = "month")
+    private String month;
     @Basic
     @Column(name = "price")
     private String price;
@@ -21,8 +21,8 @@ public class Bill {
     @Column(name = "meterReader")
     private String meterReader;
 
-    public Bill(String nic, String price, String date, String meterReader) {
-        this.nic = nic;
+    public Bill(String month, String price, String date, String meterReader) {
+        this.month = month;
         this.price = price;
         this.date = date;
         this.meterReader = meterReader;
@@ -40,12 +40,12 @@ public class Bill {
         this.id = id;
     }
 
-    public String getNic() {
-        return nic;
+    public String getMonth() {
+        return month;
     }
 
-    public void setNic(String nic) {
-        this.nic = nic;
+    public void setNic(String month) {
+        this.month = month;
     }
 
     public String getPrice() {
@@ -80,7 +80,7 @@ public class Bill {
         Bill bill = (Bill) o;
 
         if (id != bill.id) return false;
-        if (nic != null ? !nic.equals(bill.nic) : bill.nic != null) return false;
+        if (month != null ? !month.equals(bill.month) : bill.month != null) return false;
         if (price != null ? !price.equals(bill.price) : bill.price != null) return false;
         if (date != null ? !date.equals(bill.date) : bill.date != null) return false;
         if (meterReader != null ? !meterReader.equals(bill.meterReader) : bill.meterReader != null) return false;
@@ -91,7 +91,7 @@ public class Bill {
     @Override
     public int hashCode() {
         int result = id;
-        result = 31 * result + (nic != null ? nic.hashCode() : 0);
+        result = 31 * result + (month != null ? month.hashCode() : 0);
         result = 31 * result + (price != null ? price.hashCode() : 0);
         result = 31 * result + (date != null ? date.hashCode() : 0);
         result = 31 * result + (meterReader != null ? meterReader.hashCode() : 0);

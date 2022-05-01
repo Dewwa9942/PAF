@@ -23,11 +23,11 @@ public class BillController {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response addBill(HashMap<String, ?> billData) {
-        String nic = (String) billData.get("nic");
+        String month = (String) billData.get("month");
         String price = (String) billData.get("price");
         String date = (String) billData.get("date");
         String meterReader = (String) billData.get("meterReader");
-        bill = new Bill(nic, price, date, meterReader);
+        bill = new Bill(month, price, date, meterReader);
 
         return billService.addBill(bill);
     }
@@ -37,11 +37,11 @@ public class BillController {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response updateBill(HashMap<String, ?> billData, @PathParam("billId") Integer billId) {
-        String nic = (String) billData.get("nic");
+        String month = (String) billData.get("month");
         String price = (String) billData.get("price");
         String date = (String) billData.get("date");
         String meterReader = (String) billData.get("meterReader");
-        bill = new Bill(nic, price, date, meterReader);
+        bill = new Bill(month, price, date, meterReader);
         bill.setId(billId);
 
         return billService.updateBill(bill);

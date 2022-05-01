@@ -23,11 +23,12 @@ public class PaymentController {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response addPayment(HashMap<String, ?> paymentData) {
-        String nic = (String) paymentData.get("nic");
+
         String month = (String) paymentData.get("month");
         String price = (String) paymentData.get("price");
         String date = (String) paymentData.get("date");
-        payment = new Payment(nic, month, price, date);
+        String method = (String) paymentData.get("method");
+        payment = new Payment(month, price, date, method);
 
         return paymentService.addPayment(payment);
     }
@@ -37,11 +38,11 @@ public class PaymentController {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response updatePayment(HashMap<String, ?> paymentData, @PathParam("paymentId") Integer paymentId) {
-        String nic = (String) paymentData.get("nic");
         String month = (String) paymentData.get("month");
         String price = (String) paymentData.get("price");
         String date = (String) paymentData.get("date");
-        payment = new Payment(nic, month, price, date);
+        String method = (String) paymentData.get("method");
+        payment = new Payment(month, price, date, method);
         payment.setId(paymentId);
 
         return paymentService.updatePayment(payment);
