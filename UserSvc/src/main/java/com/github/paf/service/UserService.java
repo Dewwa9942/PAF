@@ -167,16 +167,27 @@ public class UserService {
 					.entity("DataBase connectivity Error")
 					.build();
 
-			String query = "UPDATE user SET nic=?, name=?, city=?, number=? WHERE id=?";
+			String query = "UPDATE user SET ";
+			if (user.getNic() != null) query += "nic = ?, ";
+			if (user.getName() != null) query += "name = ?, ";
+			if (user.getCity() != null) query += "city = ?, ";
+			if (user.getNumber() != null) query += "number = ?, ";
+
+			query = query.substring(0, query.length() - 2);
+
+			query += " WHERE id=?";
+
 			PreparedStatement preparedStmt = con.prepareStatement(query);
 
-			preparedStmt.setString(1, user.getNic());
-			preparedStmt.setString(2, user.getName());
-			preparedStmt.setString(3, user.getCity());
-			preparedStmt.setString(4, user.getNumber());
-			preparedStmt.setInt(5, user.getId());
+			int i = 1;
+			if (user.getNic() != null) preparedStmt.setString(i++, user.getNic());
+			if (user.getName() != null) preparedStmt.setString(i++, user.getName());
+			if (user.getCity() != null) preparedStmt.setString(i++, user.getCity());
+			if (user.getNumber() != null) preparedStmt.setString(i++, user.getNumber());
+			preparedStmt.setInt(i++, user.getId());
 
 			preparedStmt.execute();
+
 			con.close();
 		}
 		catch (Exception e)
