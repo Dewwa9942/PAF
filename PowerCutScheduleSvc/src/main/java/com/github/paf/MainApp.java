@@ -17,8 +17,8 @@ public class MainApp {
     public static Server startServer() {
 
         final ResourceConfig config = new ResourceConfig()
-                .registerInstances(new PowerCutScheduleController())
-                .register(CORSResponseFilter.class);
+                .registerInstances(new PowerCutScheduleController());
+                //.register(CORSResponseFilter.class);
 
         return JettyHttpContainerFactory.createServer(UriBuilder.fromUri(BASE_URI).port(PORT).build(), config);
 

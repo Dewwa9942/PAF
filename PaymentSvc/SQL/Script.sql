@@ -18,8 +18,8 @@ CREATE TABLE payment(
 
 INSERT INTO payment(month,price,date, method)
 VALUES
-    ("month 1", "price 1", "date 1", "method 1"),
-    ("month 2", "price 2", "date 2", "method 2"),
-    ("month 3", "price 3", "date 3", "method 3"),
-    ("month 4", "price 4", "date 4", "method 4"),
-    ("month 5", "price 5", "date 5", "method 5");
+    ("January", "100", "2022-01-28", "Visa Card"),
+    ("February", "200", "2022-02-28", "Master Card"),
+    ("March", "300", "2022-03-28", "Master Card"),
+    ("April", "400", "2022-04-28", "Visa Card"),
+    ("May", "500", "2022-05-28", "Visa Card");

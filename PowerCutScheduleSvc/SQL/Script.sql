@@ -18,8 +18,8 @@ CREATE TABLE powercutschedule(
 
 INSERT INTO powercutschedule(zone,date,time,totalHours)
 VALUES
-    ("A", "date 1", "time 1", "totalHours 1"),
-    ("B", "date 2", "time 2", "totalHours 2"),
-    ("C", "date 3", "time 3", "totalHours 3"),
-    ("D", "date 4", "time 4", "totalHours 4"),
-    ("E", "date 5", "time 5", "totalHours 5");
+    ("A", "2022-04-10", "8.30", "5"),
+    ("B", "2022-04-11", "10.30", "4"),
+    ("C", "2022-04-12", "8.00", "4"),
+    ("D", "2022-04-13", "9.00", "6"),
+    ("E", "2022-04-14", "10.00", "5");

@@ -37,11 +37,11 @@ CREATE TABLE payment(
 
 INSERT INTO payment(month,price,date,method)
 VALUES
-    ("month 1", "price 1", "date 1", "method 1"),
-    ("month 2", "price 2", "date 2", "method 2"),
-    ("month 3", "price 3", "date 3", "method 3"),
-    ("month 4", "price 4", "date 4", "method 4"),
-    ("month 5", "price 5", "date 5", "method 5");
+        ("January", "100", "2022-01-28", "Visa Card"),
+        ("February", "200", "2022-02-28", "Master Card"),
+        ("March", "300", "2022-03-28", "Master Card"),
+        ("April", "400", "2022-04-28", "Visa Card"),
+        ("May", "500", "2022-05-28", "Visa Card");
 
 # Bill - Month, Price, Date, Meter Reader
 CREATE TABLE bill(
@@ -94,8 +94,8 @@ CREATE TABLE powercutschedule(
 
 INSERT INTO powercutschedule(zone,date,time,totalHours)
 VALUES
-    ("A", "date 1", "time 1", "totalHours 1"),
-    ("B", "date 2", "time 2", "totalHours 2"),
-    ("C", "date 3", "time 3", "totalHours 3"),
-    ("D", "date 4", "time 4", "totalHours 4"),
-    ("E", "date 5", "time 5", "totalHours 5");
+        ("A", "2022-04-10", "8.30", "5"),
+        ("B", "2022-04-11", "10.30 2", "4"),
+        ("C", "2022-04-12", "8.00", "4"),
+        ("D", "2022-04-13", "9.00", "6"),
+        ("E", "2022-04-14", "10.00", "5");
